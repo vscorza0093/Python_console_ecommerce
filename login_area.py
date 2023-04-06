@@ -10,15 +10,20 @@ app_loop = True
 def CheckUserInput(user_input):
     match user_input:
         case 'l':
+            os.system('CLS')
             login_manager.GetUserLogin()
         case 'c':
+            os.system('CLS')
             #new_user_manager.CheckIfNameIsRegistered()
             new_user_manager.GetLastUserId()
         case 'd':
+            os.system('CLS')
             login_manager.LogOut()
         case 'i':
+            os.system('CLS')
             login_manager.GetUserInfo()
         case 's':
+            os.system('CLS')
             QuitApplication()
 
 def QuitApplication():
@@ -28,7 +33,6 @@ def QuitApplication():
     print("Obrigado por utilizar o Python console ecommerce")
 
 while app_loop:
-    os.system('CLS')
     is_logged_in = login_manager.is_logged_in
 
     print("O que deseja fazer?\n")

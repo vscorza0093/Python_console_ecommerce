@@ -5,6 +5,7 @@ import os
 conexao = sqlite3.connect('python_console_ecommerce')
 cursor = conexao.cursor()
 checar_nome = True
+
 def GetLastUserId():
     cursor.execute('''SELECT id FROM usuarios ORDER BY id DESC''')
     my_result = cursor.fetchall()
