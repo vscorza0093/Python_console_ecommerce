@@ -26,6 +26,7 @@ def CheckUsernameAndPassword(login, password):
                 WelcomeMessage()
                 return
             else:
+                os.system('CLS')
                 print("Login ou senha incorretos")
 
 #def GetUsernameFromDataBase():

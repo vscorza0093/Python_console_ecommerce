@@ -2,46 +2,25 @@ import os
 import sqlite3
 import login_manager
 import new_user_manager
+import menu_manager
+import main_menu
 
 conexao = sqlite3.connect('python_console_ecommerce')
 cursor = conexao.cursor()
-app_loop = True
 
-def CheckUserInput(user_input):
-    match user_input:
-        case 'l':
-            os.system('CLS')
-            login_manager.GetUserLogin()
-        case 'c':
-            os.system('CLS')
-            #new_user_manager.CheckIfNameIsRegistered()
-            new_user_manager.GetLastUserId()
-        case 'd':
-            os.system('CLS')
-            login_manager.LogOut()
-        case 'i':
-            os.system('CLS')
-            login_manager.GetUserInfo()
-        case 's':
-            os.system('CLS')
-            QuitApplication()
+def OpenLoginArea():
+    os.system('CLS')
+    print("Você está na área de Login")
+    while menu_manager.app_loop:
+        is_logged_in = login_manager.is_logged_in
 
-def QuitApplication():
-    global app_loop
-    app_loop = False
-    conexao.close()
-    print("Obrigado por utilizar o Python console ecommerce")
+        print("O que deseja fazer?\n")
 
-while app_loop:
-    is_logged_in = login_manager.is_logged_in
+        if (is_logged_in == False):
+            print("Menu Principal (M), Cadastrar (C), Login (L), Sair (S):")
+        else:
+            print("Menu Principal (M), Verificar informações (I), Deslogar (D), Sair (S):")
 
-    print("O que deseja fazer?\n")
-
-    if (is_logged_in == False):
-        print("Cadastrar (C), Login (L), Sair (S):")
-    else:
-        print("Verificar informações (I), Deslogar (D), Sair (S):")
-
-    user_input = str(input()).lower()
-    CheckUserInput(user_input)
+        user_input = str(input()).lower()
+        app_loop = menu_manager.CheckUserInput(user_input)
 

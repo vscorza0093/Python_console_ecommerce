@@ -1,6 +1,7 @@
 import sqlite3
 from datetime import datetime
 import os
+import login_area
 
 conexao = sqlite3.connect('python_console_ecommerce')
 cursor = conexao.cursor()
@@ -46,6 +47,10 @@ def CheckIfNameIsRegistered(nome):
     global checar_nome
     cursor.execute('''SELECT nome FROM usuarios''')
     my_result = cursor.fetchall()
+
+    if nome == "":
+        os.system('CLS')
+        login_area.OpenLoginArea()
 
     for data in my_result:
         if str(data[0]) == str(nome):
