@@ -1,4 +1,5 @@
 import sqlite3
+import os
 
 conexao = sqlite3.connect('python_console_ecommerce')
 cursor = conexao.cursor()
@@ -33,6 +34,7 @@ def CheckUsernameAndPassword(login, password):
 #    return 0
 
 def WelcomeMessage():
+    os.system('CLS')
     global is_logged_in
     print("Você chegou ao Python Console Ecommerce")
     is_logged_in = True

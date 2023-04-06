@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import datetime
 
-conexao = sqlite3.connect('python_console_ecommerce')
+conexao = sqlite3.connect('../python_console_ecommerce')
 
 cursor = conexao.cursor()
 
