@@ -1,4 +1,4 @@
-import login_manager
+from user_manager import login_manager
 import menu_manager
 import os
 
@@ -11,7 +11,7 @@ def OpenMainMenu():
 
         print("O que deseja fazer?\n")
 
-        if (is_logged_in == False):
+        if not is_logged_in:
             print("Listar Produtos (P), Entrar/Cadastrar (E), Sair (S):")
         else:
             print("Listar Produtos (P), Verificar informações (I), Deslogar (D), Sair (S):")

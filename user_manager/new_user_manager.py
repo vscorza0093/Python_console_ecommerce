@@ -7,19 +7,21 @@ conexao = sqlite3.connect('python_console_ecommerce')
 cursor = conexao.cursor()
 checar_nome = True
 
+
 def GetLastUserId():
     cursor.execute('''SELECT id FROM usuarios ORDER BY id DESC''')
     my_result = cursor.fetchall()
     last_index = my_result[0][0]
     GetUserInfo(last_index + 1)
 
+
 def GetUserInfo(last_index):
     os.system('CLS')
     global checar_nome
-    while (checar_nome):
+    while checar_nome:
         print ("Digite seu nome:")
         nome = input()
-        CheckIfNameIsRegistered(nome)
+        CheckIfNameIsAvailable(nome)
     checar_nome = True
     print ("Digite seu email:")
     email = input()
@@ -35,6 +37,7 @@ def GetUserInfo(last_index):
     tipo_usuario = 1
     SetUserData(nome, email, senha, endereco, estado, data_cadastro, id, tipo_usuario)
 
+
 def SetUserData(nome, email, senha, endereco, estado, data_cadastro, id, tipo_usuario):
     os.system('CLS')
     print(f"Usuário {nome} cadastrado com sucesso")
@@ -43,7 +46,8 @@ def SetUserData(nome, email, senha, endereco, estado, data_cadastro, id, tipo_us
                    (nome, email, senha, endereco, estado, data_cadastro, id, tipo_usuario));
     conexao.commit()
 
-def CheckIfNameIsRegistered(nome):
+
+def CheckIfNameIsAvailable(nome):
     global checar_nome
     cursor.execute('''SELECT nome FROM usuarios''')
     my_result = cursor.fetchall()

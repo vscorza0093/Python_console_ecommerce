@@ -1,12 +1,11 @@
 import os
 import sqlite3
-import login_manager
-import new_user_manager
+from user_manager import login_manager
 import menu_manager
-import main_menu
 
 conexao = sqlite3.connect('python_console_ecommerce')
 cursor = conexao.cursor()
+
 
 def OpenLoginArea():
     os.system('CLS')
@@ -16,7 +15,7 @@ def OpenLoginArea():
 
         print("O que deseja fazer?\n")
 
-        if (is_logged_in == False):
+        if not is_logged_in:
             print("Menu Principal (M), Cadastrar (C), Login (L), Sair (S):")
         else:
             print("Menu Principal (M), Verificar informações (I), Deslogar (D), Sair (S):")

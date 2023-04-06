@@ -11,10 +11,12 @@ def GetUserLogin():
     login = str(input())
     GetUserPassword(login)
 
+
 def GetUserPassword(login):
     print("Digite sua senha")
     password = input()
     CheckUsernameAndPassword(login,password)
+
 
 def CheckUsernameAndPassword(login, password):
     novo_login = (f'''SELECT * FROM usuarios''')
@@ -29,10 +31,12 @@ def CheckUsernameAndPassword(login, password):
                 os.system('CLS')
                 print("Login ou senha incorretos")
 
+
 #def GetUsernameFromDataBase():
 #    return 0
 #def GetPasswordFromDataBase():
 #    return 0
+
 
 def WelcomeMessage():
     os.system('CLS')
@@ -40,14 +44,9 @@ def WelcomeMessage():
     print("Você chegou ao Python Console Ecommerce")
     is_logged_in = True
 
+
 def LogOut():
     global is_logged_in
     print("Volte sempre!")
     is_logged_in = False
 
-def GetUserInfo():
-    novo_login = (f'''SELECT * FROM usuarios''')
-    cursor.execute(novo_login)
-    my_result = cursor.fetchall()
-    for data in my_result:
-        print(data)
